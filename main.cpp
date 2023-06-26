@@ -19,6 +19,7 @@ int main()
     size_t screenWidth = 1280, screenHeight = 720;
 
     InitWindow(screenWidth, screenHeight, "Phys");
+    SetTargetFPS(60);
 
     while (!WindowShouldClose()) {
         PollInputEvents();
@@ -27,6 +28,10 @@ int main()
         ClearBackground(BLACK);
 
         DrawEditorGrid(screenWidth, screenHeight);
+
+        char buffer[256];
+        snprintf(buffer, 256, "Frame Time: %f\n", GetFrameTime());
+        DrawText(buffer, 2, 0, 25, GRAY);
 
         EndDrawing();
     }
